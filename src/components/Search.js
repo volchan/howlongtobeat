@@ -1,16 +1,18 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import { StyleSheet } from "react-native";
 import { Input } from "react-native-elements";
 
 import { white } from "../config/colors";
 
+import { Context as SearchContext } from "../context/SearchContext";
+
 export default function App() {
-  const [term, setTerm] = useState("");
+  const { state, searchTerm } = useContext(SearchContext);
 
   return (
     <Input
-      value={term}
-      onChangeText={setTerm}
+      value={state.searchTerm}
+      onChangeText={searchTerm}
       autoCapitalize="none"
       autoCorrect={false}
       placeholder="Search a game"
