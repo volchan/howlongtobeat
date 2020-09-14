@@ -1,21 +1,27 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import { StatusBar } from "react-native";
+import { createAppContainer, createSwitchNavigator } from "react-navigation";
+import { createStackNavigator } from "react-navigation-stack";
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+import { backgroundColor } from "./src/config/colors";
+import { setNavigator } from "./src/navigationRef";
+import SearchScreen from "./src/screens/SearchScreen";
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+const searchFlow = createStackNavigator({
+  Search: SearchScreen,
+  // Detail: DetailScreen,
 });
+
+const switchNavigator = createSwitchNavigator({
+  SearchFlow: searchFlow,
+});
+
+const App = createAppContainer(switchNavigator);
+export default () => {
+  return (
+    <>
+      <StatusBar barStyle="light" backgroundColor={backgroundColor} />
+      <App ref={(navigator) => setNavigator(navigator)} />
+    </>
+  );
+};
