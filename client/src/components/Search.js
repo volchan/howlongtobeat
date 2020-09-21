@@ -6,12 +6,14 @@ import { white } from "../config/colors";
 
 import { Context as SearchContext } from "../context/SearchContext";
 
-export default function App() {
+const Search = () => {
   const { state, searchTerm } = useContext(SearchContext);
+
+  console.log(state.games);
 
   return (
     <Input
-      value={state.searchTerm}
+      value={state.term}
       onChangeText={searchTerm}
       autoCapitalize="none"
       autoCorrect={false}
@@ -44,3 +46,5 @@ const styles = StyleSheet.create({
     marginLeft: 5,
   },
 });
+
+export default Search;
