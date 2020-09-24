@@ -9,8 +9,6 @@ import { Context as SearchContext } from "../context/SearchContext";
 const Search = () => {
   const { state, searchTerm } = useContext(SearchContext);
 
-  console.log(state.games);
-
   return (
     <Input
       value={state.term}

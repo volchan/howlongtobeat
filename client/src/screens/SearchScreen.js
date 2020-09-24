@@ -3,12 +3,14 @@ import { SafeAreaView, StyleSheet, Text } from "react-native";
 
 import { backgroundColor, white } from "../config/colors";
 import Search from "../components/Search"
+import ResultsList from "../components/ResultsList"
 
 const SearchScreen = () => {
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.title}>How Long To Beat</Text>
       <Search />
+      <ResultsList />
     </SafeAreaView>
   );
 };
